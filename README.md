@@ -13,6 +13,4 @@ axis2 版本 1.6.2，spring 版本 4.3.0.RELEASE
 
 ## Andy.wang
 
-<img src="doc/594580820.jpg" width="15%" alt="Andy.wang的QQ"/>
-
 
