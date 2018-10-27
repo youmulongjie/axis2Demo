@@ -1,0 +1,24 @@
+<!-- 服务名（任意名称，最好符合业务），服务访问路径是 sayHi?wsdl -->
+<service name="sayHi"> 
+	<!-- 服务描述（对于那些访问该服务的用户来说，服务描述是非常有用的） -->
+    <description>this is a axis2 webservice demo</description> 
+    
+    <!-- 通过ServiceObjectSupplier参数指定SpringServletContextObjectSupplier类来获得Spring的ApplicationContext对象 -->
+    <parameter name="ServiceObjectSupplier">
+    	org.apache.axis2.extensions.spring.receivers.SpringAppContextAwareObjectSupplier 
+    </parameter> 
+    
+     <!-- 
+       SpringBeanName固定的不能改
+       sayHiImpl 是spring中注册的服务实现类id，与 @Component有关
+     -->
+    <parameter name="SpringBeanName">sayHiImpl</parameter> 
+    
+    <!-- 服务级消息接收器，在部署时，Axis2会自动给操作选择正确的消息接收器 -->
+    <messageReceivers> 
+        <messageReceiver mep= "http://www.w3.org/2004/08/wsdl/in-only" 
+             class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/> 
+        <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out" 
+             class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/> 
+    </messageReceivers> 
+</service> 
